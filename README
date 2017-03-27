@@ -1,0 +1,10 @@
+Most credit goes to the Jacob Vlijm from the following Ask Ubuntu post: http://askubuntu.com/questions/850997/no-caps-lock-indicator-light
+I simply added a loop to account for the changing filename
+
+INSTRUCTIONS
+-------------------------------------------
+1. copy the fix_led script into /usr/local/bin and make it executable via chmod +x fix_led
+2. Test the script by running "sudo fix_led"
+3. Add the script to your sudoers file via "visudo". Add the line "ALL ALL = NOPASSWD: /usr/local/bin/fix_led"
+4. Add the command "sudo fix_led" to your startup applications
+
