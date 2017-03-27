@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+#command: /bin/bash -c "sleep 10 && sudo /usr/local/bin/fix_led"
+import subprocess
+import time
+import os
+
+for fileName in os.listdir("/sys/class/leds/"):
+	if("caps" in fileName):
+		led = "/sys/class/leds/" + fileName + "/brightness"
+
+while True:
+    time.sleep(0.3)
+    ledstate = open(led).read().strip() == "1"
+    capstate = "Caps Lock:   on" in \
+            subprocess.check_output(["xset", "-q"]).decode("utf-8")
+    if ledstate != capstate:
+        newled = "0" if capstate == False else "1"
+        open(led, "wt").write(newled)
